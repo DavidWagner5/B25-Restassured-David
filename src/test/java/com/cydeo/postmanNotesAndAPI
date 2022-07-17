@@ -1,0 +1,43 @@
+key value structure. if you want to swearch something you put /search
+
+to find id i postman do /:id
+
+q is a developer keyword, it means when we want to get a key, in value we put curly braces and the whole key,value
+for example q is the generic and {"region_id":2} is the key and value that yo put in 'VALUE' slot in postman if you want to get all the employee with that region
+or like {"job_id":"IT_PROG"}
+
+
+jsonpath = json   jsonpath method use for finding out the stuff easily
+
+
+for json files, json path finder is a good websites to acclimate yourself
+
+syntax is usually the same thing every time
+Response response = given().accept(ContentType.JSON).and().queryParam("q", "{\"region_id\":2}")
+                                                    .log().all().get("countries");
+
+
+jamal notes
+
+    for automation we use restassured library with maven project
+
+  pathParam = part of the url and comers after url only the value like /api/spartans/{id}  {} means the parameter
+  queryparam = comes after the url, it is not part of the url, works like key and value structure
+ we chains multiple query parameters with & sign
+
+  headers:
+  application/json
+  application/xml
+  credentials(username,password,toke,key) these are for verifying content type
+
+  status codes =
+  2xx
+  4xx
+  5xx
+
+
+  body:
+ body is the part that we see the data, it can be in json or xml format
+
+ We start verifying json body with contains() method, which is not a good practice
+

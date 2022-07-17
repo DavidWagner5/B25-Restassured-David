@@ -1,0 +1,24 @@
+HTTP STATUS CODES
+2xx --> SUCCESSFUL
+	200 OK --> most common success status code, GET is returing, others might return too.
+	201 CREATED --> we will be getting it for POST request almost always.
+	204 No Content --> successful but no respond body(json,xml,text etc..) only headers and status code as response , for spartan put/patch/delete we got 204.
+
+4xx--> CLIENT ERROR
+	400 Bad Request --> sending bad data to server
+			--example: when we post a new spartan, if we dont have proper json body, it will return 400,
+	401 Unauthorized --> no credentials, api does not know who we are. no token etc.
+			--example: try to get spartan :7000 without providing username and password
+	403 Forbidden --> we have credentials or token but dont have right/permission to do 				action
+	404 Not Found --> the resource you are looking for does not exist
+	405 Method not Allowed --> cannot perform this http method on the the endpoint
+			--example: /api/spartans/10 is valid for GET request but if you send POSt request it will give  you 405. bsaically endpoint is valid, only does NOT support the method you used.
+	406 Not Acceptable --> Endpoint only support getting the response in certain format like JSON and we asked for a format that is not supported like XML.
+			--example: we can get all spartan in xml format but for individual spartan like /api/spartan/10 with header Accept, application/xml will return 406.basically api is telling us it is not supported. in ords api even if we asked xml we got 200 and result is still json. which is a bug example.
+	415 Unsupported media type --> server is expecting to get the body in certain content type, but the client send unsupported content type.
+			example: ifwe use content-type application/xml to POST something to spartans, it will complain with 415.
+
+
+5xx--> SERVER ERROR
+		500 Internal Server Error --> the server encountered and unexpected condition that prevented it from fulfiling the request.
+		503 Service Unavailable --> the server is currently unable to handle the request due to a temporary overload or scheduled maintenance.

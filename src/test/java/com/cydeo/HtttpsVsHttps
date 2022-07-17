@@ -1,0 +1,25 @@
+=================================================
+HTTP vs HTTPS
+HTTPS--> secure connection,secure HTTP
+anytime you visit a website which is https, secured and encrypted connection will be setup between you and the server.
+it means when you type card numbers, data cannot be stolen on the way.
+sometimes api also require certificates.
+
+if we are getting javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException:
+unable to find valid certification path to requested target
+
+exception but we still want to connect, we can say relaxedHTTPSValidation so restassured will send request anyway.
+
+ given()
+                    .relaxedHTTPSValidation().
+            when()
+                    .get("https://untrusted-root.badssl.com/%22)
+                    .prettyPrint();
+
+    given().keyStore("","")
+                    .when().get("url");
+
+
+for postman to add certificate --> preferences --> certificate tab, add certificate.
+
+==================================

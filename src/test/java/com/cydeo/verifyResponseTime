@@ -1,0 +1,13 @@
+How to verify response time with Restassured library ?
+
+Once we sent the request, after then(). method there is time(matchers) method which takes the response time and based on the matcher we provide, it will do assertion.
+
+we can use greaterThan(),lessThan(), or both at the same time
+
+		.then()
+                .statusCode(200)
+                .and()
+                .time(both(greaterThan(500L)).and(lessThan(1200L)))
+                .extract().response();
+
+we can also get the value out of response object with response.getTime() method.
